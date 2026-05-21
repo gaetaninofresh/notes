@@ -5,10 +5,9 @@ Distinguiamo due tipi principali di sistemi software dipendenti:
 * **Life-critical system**: il loro malfunzionamento mette in pericolo vite umane.
 * **Mission-critical systems**: i malfunzionamenti causano perdite finanziarie o di asset.
 
-Al fine di garantire la correttezza dei sistemi, vengono definiti i **metodi formali**, ovvero tecniche matematicamente ben fondate progettate per assistere lo sviluppo di sistemi complessi.
+Al fine di garantire la correttezza dei sistemi, vengono definiti i **metodi formali**, tecniche matematicamente ben fondate per assistere lo sviluppo di sistemi complessi.
 
-Un metodo formale è composto da 
-
+Un metodo formale è composto da:
 * Linguaggi: Notazioni matematiche con semantica formale atti a definire modelli e le loro proprietà
 * Tools: Strumenti software a supporto dello sviluppo di FM
 * Metodologie:
@@ -74,45 +73,54 @@ L'esecuzione (o run) di una ASM è una sequenza di stati che parte dallo stato i
     * **Shared**: lette e scritte sia dalla macchina che dall'ambiente.
     * **Derived**: i valori sono calcolati a partire da funzioni statiche e monitorate tramite una legge o schema fissato a priori.
 
-### 3.2 Locazioni e Aggiornamenti
-Una locazione in una ASM è una coppia formata dal nome della funzione e dai suoi argomenti, ad esempio (f, v1,...,vn). Aggiornare stati astratti significa cambiare l'interpretazione (e quindi il valore) delle funzioni dinamiche in specifiche locazioni.
-Un insieme di aggiornamenti (update set) è consistente se non tenta di assegnare valori diversi alla medesima locazione. Se è consistente, l'update set può essere applicato (fired) per generare il nuovo stato.
-
-## 4. Regole di transizione
+## Regole di transizione
 Aggiornare stati astratti significa cambiare l’interpretazione di un qualsiasi numero di funzione dinamiche della segnatura della macchina.
+Un insieme di aggiornamenti (update set) è **consistente** se non tenta di assegnare valori diversi alla medesima locazione.
 Il cambiamento dell’interpretazione delle funzioni è descritto da regole di transizione.
 
-* **Update rule**
+##### Update rule
   Costrutto di base delle regole di transizione, determina l’aggiornamento di una locazione ASM.
-  f(t1,...,tn) := s
+  
+    f(t1,...,tn) := s
+  
   Dove:
-  f è un nome di funzione dinamica n-arina in Sigma
-  t1,...,tn ed s sono termini di Sigma
-  Per funzioni 0-arie (variabili) ha forma x:=s
+  * $f$ è un nome di funzione dinamica n-arina in $\Sigma$
+  * $t_1,...,t_n$ ed $s$ sono termini di $\Sigma$
+  * Per funzioni 0-arie (variabili) ha forma `x := s`
 
-* **Conditional rule**
-  if psi then R else S
-  Se psi espressione booleana è vera esegui R, altrimenti esegui S.
+##### Conditional rule
+    if psi then R else S
 
-* **Skip rule**
-  skip
-  Non fare nulla
+  Se $\psi$ espressione booleana è vera esegui $R$, altrimenti esegui $S$.
 
-* **Let rule**
-  let x=t in R(x)
-  Assegna il valore di t ad x ed esegue R. Utilizzata come abbreviazione.
+##### **Skip rule**
+    skip
+
+Non fare nulla
+
+##### Let rule
+
+    let x=t in R(x)
+
+Assegna il valore di $t$ ad $x$ ed esegue $R$. Utilizzata come abbreviazione.
 
 * **Block Rule**
-  par
-  R
-  S
-  endpar
-  Consente di eseguire R ed S in parallelo (un'unica transizione invece di multiple). Modella syncronous bounded parallesim (applicazione simultanea di un numero finito di funzioni).
-  NB: In casi in cui degli aggiornamenti dipendano da altri valori alterati nello stesso aggiornamento par, questi fanno riferimento al valore precedente all’esecuzione delle istruzioni in par.
+```
+par
+    R
+    S
+endpar
+```
+Consente di eseguire $R$ ed $S$ in parallelo (un'unica transizione invece di multiple). 
+Modella *syncronous bounded parallesi*m (applicazione simultanea di un numero finito di funzioni).
 
-* **(Macro) Call Rule**
-  R [t1,...,tn]
-  chiama R (regola con parametri) con argomenti t1,..., tn.
+>**NB**: In casi in cui degli aggiornamenti dipendano da altri valori alterati nello stesso aggiornamento par, questi fanno riferimento al valore precedente all’esecuzione delle istruzioni in par.
+
+##### (Macro) Call Rule
+```
+R [t1,...,tn]
+```
+chiama R (regola con parametri) con argomenti t1,..., tn.
 
 * **Forall Rule**
   forall x with phi do R[x]
