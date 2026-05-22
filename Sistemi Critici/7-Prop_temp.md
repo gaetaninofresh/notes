@@ -1,4 +1,3 @@
-
 # Verifica di Proprietà Temporali
 
 > **Domande Esame**
