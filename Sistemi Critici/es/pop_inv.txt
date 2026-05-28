@@ -1,0 +1,52 @@
+Signature:
+	dynamic abstract domain People
+	enum domain Sex = {M | F}
+	dynamic abstract domain Couples: (People, People)
+
+	dynamic controlled age: People -> Integer
+	dynamic controlled parent: People -> (People, People)
+	dynamic controlled sex: People -> Sex
+	dynamic controlled alive: People -> Boolean
+
+	static startMatureAge: Integer
+	static endMatureAgeW: Integer
+
+
+Definitions:
+	startMatureAge = 13
+	endMatureAgeW = 50
+
+Rules:
+	macro rule age():
+		forall $x in People with alive($x) do
+			age($x) := age($x) +1
+
+
+	macro rule die():
+		forall $p in People with alive($p) do
+			choose $x in {1 : 100} with true do
+				if($x >= 90) then 
+					alive($p) := false
+
+
+	macro rule born($mom, $dad in People):
+		extend People with $p do 
+			par
+				choose $s in Sex with true do
+					sex($p) := $s
+				age($s) := 0
+				alive($s) := true
+				parent($s) := ($mom, $dad)
+			endpar
+
+
+	macro rule mate():
+		forall $w in People with alive($w) & age($w) >= startMatureAge & age($w) <= endMatureAgeW do
+			choose $x in {1 : 100} with true do
+				if($x >= 80) then
+					choose $m in People with alive($w) & age($m) >= startMatureAge do
+						born($w, $m)
+
+	invariant over alive:
+		age($p in Person) == 0 implies alive($p)
+	

@@ -57,9 +57,11 @@ Alcune equivalenze fondamentali sono:
 * $AF\phi \leftrightarrow A[\top \ U \ \phi]$
 * $EF\phi \leftrightarrow E[\top \ U \ \phi]$
 
-Grazie a queste equivalenze, è possibile definire un **insieme di simboli adeguato** composto esclusivamente da $\{ \perp, \neg, \vee, AF, EU, EX \}$. Ogni formula CTL può essere riscritta in una formula equivalente che utilizza solo questi connettivi di base nel seguente modo:
+Grazie a queste equivalenze, è possibile definire un **insieme di simboli adeguato** composto esclusivamente da $\{ \perp, \neg, \land, AF, EU, EX \}$. 
+
+Ogni formula CTL può essere riscritta in una formula equivalente che utilizza solo questi connettivi di base nel seguente modo:
 1. $\top = \neg\perp$
-2. $\phi_1 \wedge \phi_2 = \neg(\neg\phi_1 \vee \neg\phi_2)$
+2. $\phi_1 \lor \phi_2 = \neg(\neg\phi_1 \land \neg\phi_2)$
 3. $\phi_1 \rightarrow \phi_2 = (\neg\phi_1 \vee \phi_2)$
 4. $AX(\phi_1) = (\neg EX\neg\phi_1)$
 5. $EF(\phi_1) = E[\top \ U \ \phi_1]$
@@ -67,18 +69,21 @@ Grazie a queste equivalenze, è possibile definire un **insieme di simboli adegu
 7. $AG(\phi_1) = (\neg EF\neg\phi_1)$
 8. $A[\phi_1 \ U \ \phi_2] = \neg(E[\neg\phi_2 \ U \ (\neg\phi_1 \wedge \neg\phi_2)] \vee \neg AF\phi_2)$
 
-## Algoritmo di Model Checking (Labelling Algorithm)
+## Model Checking Algoritmico
 Dati un modello $\mathcal{M}$ e uno stato $s \in S$, assieme ad una formula $\phi$, il problema è verificare se $\mathcal{M}, s \models \phi$. Questo si articola solitamente in due varianti:
 1. Considerare uno stato iniziale $s_0 \in I$ e verificare che $\mathcal{M}, s_0 \models \phi$.
 2. Estrarre l'insieme $X \subseteq S$ di *tutti* gli stati in cui $\phi$ è soddisfatta. Quest'ultimo caso risolve implicitamente anche il primo controllando se $s_0 \in X$.
 
-### L'algoritmo
+### Labeling
 Il Labelling Algorithm prende in INPUT un modello $\mathcal{M}$ e una formula $\phi$, e restituisce in OUTPUT l'insieme $X \subseteq S$ degli stati che la soddisfano.
-L'algoritmo restringe preventivamente il set di operatori CTL all'insieme adeguato ($\perp, \neg, \vee, AF, EU, EX$) ed etichetta ciascuno stato $s \in S$ con l'insieme delle sottoformule vere in esso, procedendo dalle sottoformule più piccole (bottom-up) fino alla formula completa $\phi$.
 
-Valutazione in base alla struttura della sottoformula $\psi$:
+L'algoritmo:
+- Restringe preventivamente il set di operatori CTL all'insieme adeguato ($\perp, \neg, \vee, AF, EU, EX$)
+- Etichetta ciascuno stato $s \in S$ con l'insieme delle sottoformule vere in esso, procedendo dalle sottoformule più piccole (bottom-up) fino alla formula completa $\phi$.
+
+##### Valutazione in base alla struttura della sottoformula $\psi$
 * **$\perp$**: Nessuno stato viene etichettato.
-* **$p$ (atomo)**: Si etichetta lo stato $s$ con $p$ se $p \in L(s)$.
+* **$p$**: Si etichetta lo stato $s$ con $p$ se $p \in L(s)$.
 * **$\psi_1 \wedge \psi_2$**: Si etichetta lo stato $s$ se è già etichettato con entrambe le sottoformule $\psi_1$ e $\psi_2$.
 * **$\neg\psi_1$**: Si etichetta lo stato $s$ con $\neg\psi_1$ se $s$ *non* è già etichettato con $\psi_1$.
 * **$AF\psi_1$**:
@@ -89,13 +94,13 @@ Valutazione in base alla struttura della sottoformula $\psi$:
   2. Uno stato viene etichettato con $E[\psi_1 \ U \ \psi_2]$ se è etichettato con $\psi_1$ e *almeno uno* dei suoi successori è etichettato con $E[\psi_1 \ U \ \psi_2]$. Anche in questo caso si itera fin quando è possibile.
 * **$EX\psi_1$**: Si etichetta lo stato $s$ con $EX\psi_1$ se *almeno uno* dei suoi successori è etichettato con $\psi_1$.
 
-### Pseudo-codice dell'algoritmo di Model Checking
-La procedura principale può essere tradotta nella funzione `SAT`, che manipola direttamente gli insiemi:
+### SAT
+La procedura di labeling può essere tradotta nella funzione `SAT`, che manipola direttamente gli insiemi:
 
 ```text
 function SAT(φ)
 begin
-    case φ di:
+    case φ:
         ⊤: return S
         ⊥: return ∅
         atomo p: return {s ∈ S | p ∈ L(s)}

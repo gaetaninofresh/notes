@@ -1,0 +1,39 @@
+Signature:
+	enum domain Shore = {Left | Right}
+	enum domain Actor = {Goat | Cabbage | Wolf | Ferryman}
+	static otherShore: Shore -> Shore
+	dynamic controlled pos : Actor -> Shore
+	dynamic monitored embark: Actor
+
+Definitions:
+static otherShore($s in Shore):
+	if $s == Left then 
+		Right
+	else 
+		Left
+	endif
+
+Rules:
+	macro rule make_move:
+		if pos(embark) == pos(Ferryman) then
+			par
+				pos(Ferryman) := otherShore(pos(Ferryman))
+				pos(embark) := otherShore(pos(embark))
+			endpar
+
+	invariant over pos:
+		pos(Goat) == pos(Cabbage) implies pos(Goat) == pos(Ferryman)
+
+	invariant over pos:
+		pos(Goat) == pos(Wolf) implies pos(Goat) == pos(Ferryman)
+
+	main rule main:
+		if (pos(Ferryman) == pos(Goat) == pos(Wolf) == pos(Cabbage)) then
+			skip
+		else
+			make_move[]
+		endif
+
+default init s0:
+	forall $a in Actor with True then 
+		pos($a) := Left

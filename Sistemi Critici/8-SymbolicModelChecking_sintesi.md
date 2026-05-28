@@ -39,11 +39,12 @@ eg g$; l'implicazione è valida se e solo se il risultato è $B_0$.
 - **`reduce`:** Etichetta i nodi dal basso verso l'alto con un ID numerico. Assegna `#0` a $B_0$ e `#1` a $B_1$. Per un nodo $n$ (livello variabile $x_i$), se $lo(n)$ e $hi(n)$ hanno lo stesso ID, il nodo $n$ prende l'ID del figlio (Regola C2). Se esiste già un nodo con la stessa variabile e stessi ID figli, si riutilizza quell'ID (Regola C3). Altrimenti assegna un nuovo ID.
 - **`apply(op, Bf, Bg)`:** Calcola il ROBDD per $f \ op \ g$ usando l'**Espansione di Shannon**:
   $$f \ op \ g = (
-eg x_i \wedge (f[0/x_i] \ op \ g[0/x_i])) ee (x_i \wedge (f[1/x_i] \ op \ g[1/x_i]))$$
+eg x_i \wedge (f[0/x_i] \ op \ g[0/x_i])) \tee (x_i \wedge (f[1/x_i] \ op \ g[1/x_i]))$$
   L'algoritmo scende ricorsivamente fino ai terminali, applica l'operatore e, in risalita, ricostruisce il ROBDD.
 - **`restrict(v, x, Bf)`:** Calcola la funzione fissando il valore della variabile $x$ a $v$ ($0$ o $1$). Gli archi entranti in nodi con etichetta $x$ vengono diretti verso il ramo corretto e il nodo rimosso.
-- **Quantificatori:** - $\exists x.f = f[0/x] ee f[1/x]$ (calcolato combinando `apply` OR e `restrict`).
-  - $orall x.f = f[0/x] \wedge f[1/x]$ (calcolato combinando `apply` AND e `restrict`).
+- **Quantificatori:** 
+    - $\exists x.f = f[0/x] \lor f[1/x]$ (calcolato combinando `apply` OR e `restrict`).
+    - $\forall x.f = f[0/x] \wedge f[1/x]$ (calcolato combinando `apply` AND e `restrict`).
 
 ---
 
@@ -55,29 +56,29 @@ Il Symbolic Model Checking unisce il Model Checking (es. algoritmo SAT per CTL) 
 - Ogni stato $s \in S$ è codificato da un vettore di bit $(v_1, v_2, \dots, v_n)$. Usando la funzione di etichettatura $L$, se $x_i \in L(s)$ allora $v_i=1$, altrimenti $v_i=0$. 
   Lo stato è rappresentato dal mintermine $l_1 \wedge l_2 \wedge \dots \wedge l_n$ (dove $l_i = x_i$ o $
 eg x_i$).
-- Un **insieme di stati** $T \subseteq S$ è descritto dalla sua **funzione caratteristica** $f_T : \{0,1\}^n ightarrow \{0,1\}$. In pratica, l'insieme è l'OR (disgiunzione) delle formule dei singoli stati che vi appartengono.
+- Un **insieme di stati** $T \subseteq S$ è descritto dalla sua **funzione caratteristica** $f_T : \{0,1\}^n \rightarrow \{0,1\}$. In pratica, l'insieme è l'OR (disgiunzione) delle formule dei singoli stati che vi appartengono.
 - Le operazioni insiemistiche classiche diventano operazioni logiche sui ROBDD:
-  - Unione $\cup \implies ee$ (OR)
+  - Unione $\cup \implies \lor$ (OR)
   - Intersezione $\cap \implies \wedge$ (AND)
   - Complemento $\implies 
 eg$ (NOT)
 
 ### Rappresentazione della Relazione di Transizione ($\Delta$)
-Una singola transizione $s ightarrow s'$ è vista come una coppia di vettori: $(v_1, \dots, v_n)$ per lo stato corrente e $(v'_1, \dots, v'_n)$ per lo stato futuro (variabili "primate").
+Una singola transizione $s \rightarrow s'$ è vista come una coppia di vettori: $(v_1, \dots, v_n)$ per lo stato corrente e $(v'_1, \dots, v'_n)$ per lo stato futuro (variabili "primate").
 La transizione è la formula $(l_1 \wedge \dots \wedge l_n) \wedge (l'_1 \wedge \dots \wedge l'_n)$.
-L'intero grafo di transizione $f_ightarrow$ è dato dall'OR logico di tutte le singole transizioni possibili. L'intera dinamica del sistema diventa un singolo colossale ROBDD a $2n$ variabili.
+L'intero grafo di transizione $f_\rightarrow$ è dato dall'OR logico di tutte le singole transizioni possibili. L'intera dinamica del sistema diventa un singolo colossale ROBDD a $2n$ variabili.
 
 ### Calcolo delle Pre-immagini Simboliche
 Per applicare l'algoritmo SAT (es. per calcolare $EX$, $EF$, $EG$), è necessario determinare quali stati possono raggiungere o raggiungono sicuramente un certo insieme target $X$.
 
 1. **Pre-immagine Esistenziale ($pre_\exists$):** Insieme degli stati da cui parte *almeno una* transizione verso $X$.
-   $$pre_\exists(X) = \{ s \in S \mid \exists s', (s ightarrow s' 	ext{ e } s' \in X) \}$$
-   **Calcolo su ROBDD:** Dato $B_X$ (ROBDD per $X$) e $B_ightarrow$ (ROBDD transizioni):
+   $$pre_\exists(X) = \{ s \in S \mid \exists s', (s \rightarrow s' 	ext{ e } s' \in X) \}$$
+   **Calcolo su ROBDD:** Dato $B_X$ (ROBDD per $X$) e $B_\rightarrow$ (ROBDD transizioni):
    - Rinomina le variabili in $B_X$ nella loro forma primata $\implies B_{X'}$.
-   - Esegui l'AND logico con le transizioni $\implies apply(\wedge, B_ightarrow, B_{X'})$.
+   - Esegui l'AND logico con le transizioni $\implies apply(\wedge, B_\rightarrow, B_{X'})$.
    - Quantifica esistenzialmente le variabili future per tornare allo spazio degli stati correnti $\implies \exists \hat{x}'. (\dots)$
 
-2. **Pre-immagine Universale ($pre_orall$):** Insieme degli stati da cui *tutte* le transizioni portano a $X$.
-   $$pre_orall(X) = \{ s \in S \mid orall s', (	ext{se } s ightarrow s' 	ext{ allora } s' \in X) \}$$
+2. **Pre-immagine Universale ($pre_\forall$):** Insieme degli stati da cui *tutte* le transizioni portano a $X$.
+   $$pre_\forall(X) = \{ s \in S \mid \forall s', (	ext{se } s \rightarrow s' 	ext{ allora } s' \in X) \}$$
    **Calcolo su ROBDD:** Sfrutta la dualità insiemistica per calcolarla partendo da $pre_\exists$:
-   $$pre_orall(X) = S - pre_\exists(S - X)$$
+   $$pre_\forall(X) = S - pre_\exists(S - X)$$
