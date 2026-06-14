@@ -60,8 +60,7 @@ eg x_i$).
 - Le operazioni insiemistiche classiche diventano operazioni logiche sui ROBDD:
   - Unione $\cup \implies \lor$ (OR)
   - Intersezione $\cap \implies \wedge$ (AND)
-  - Complemento $\implies 
-eg$ (NOT)
+  - Complemento $I^c\implies \neg$ (NOT)
 
 ### Rappresentazione della Relazione di Transizione ($\Delta$)
 Una singola transizione $s \rightarrow s'$ è vista come una coppia di vettori: $(v_1, \dots, v_n)$ per lo stato corrente e $(v'_1, \dots, v'_n)$ per lo stato futuro (variabili "primate").

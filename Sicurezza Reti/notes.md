@@ -17,3 +17,5 @@ DNSSEC impedisce completamente questo tipo di attacco grazie alla firma digitale
 Introduce inoltre i **Resource Records** [...]
 [IMMAGINE DNNSEC RECORD]
 
+
+

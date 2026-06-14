@@ -1,5 +1,3 @@
-#
-
 # AsmetaL to NuSMV
 
 ## Boolean Domain
