@@ -1,0 +1,28 @@
+# Domande esame
+- Superamento della prova di resistenza giudiziaria 
+	- L'onere della prova dell'attendibilità del dato è interamente a carico di chi lo produce in giudizio, a causa della natura intrinsecamente manipolabile dei bit streams.
+- Differenza procedimento/processo penale 
+	- Il procedimento penale è la fase delle indagini preliminari (dominata dal PM), il processo penale è eventuale ed è la fase che inizia solo con l'esercizio dell'azione penale (davanti al Giudice).
+- Differenza perizia (penale) e CTU (civile) 
+	- Nel penale la perizia è un mezzo di prova autonomo (ammesso solo per questioni complesse), mentre nel civile la CTU è uno strumento integrativo e ausiliario per colmare le lacune tecniche del giudice.
+- Accertamenti ripetibili vs irripetibili 
+	- I secondi modificano il reperto irreversibilmente (es. sblocco distruttivo, analisi di un sistema live) e impongono l'obbligo di avviso alla difesa per garantire il contraddittorio fin da subito.
+- La catena di custodia e l'hash 
+	- L'acquisizione forense deve garantire l'inalterabilità tramite calcolo di impronte crittografiche (es. SHA-256) e documentazione ininterrotta di ogni passaggio.
+- Come la marca temporale garantisce i file di log al momento dell'evento 
+	- Firma crittografica da parte di ente esterno che garantisce l'hash in un preciso momento, anche a certificato scaduto (LTV).
+- Tipologie di acquisizione di un disco rigido 
+	- **Fisica (bit-stream image)**: copia esatta bit a bit dell'intero supporto, inclusi spazi non allocati e file cancellati; **Logica**: estrazione dei soli file allocati e visibili al file system; **Selettiva/Mirata**: raccolta di specifici artefatti (utile in fase di triage); **Live**: acquisizione a sistema acceso, necessaria per catturare memoria RAM e connessioni di rete attive.
+- Necessità dell'applicazione della marca temporale anche ai log di acquisizione 
+	- Oltre all'immagine forense, i file di log certificano *come* e *con quali esiti* è avvenuta l'acquisizione tecnica. La marca temporale su questi log ne "cristallizza" l'integrità e la datazione in modo opponibile a terzi, impedendo contestazioni legali su eventuali alterazioni successive o retrodatazioni del verbale digitale.
+- Quando viene nominato il CTP 
+	- Nel **civile**, le parti lo nominano tipicamente entro un termine assegnato dal giudice dopo la nomina del CTU (Consulente Tecnico d'Ufficio). Nel **penale**, può essere nominato in ogni fase (purché non superi il numero dei periti/consulenti del PM), ma è fondamentale nominarlo **prima** dell'inizio di accertamenti tecnici irripetibili (es. art. 360 c.p.p.) per poter partecipare e garantire il contraddittorio durante le operazioni distruttive.
+- Analisi dei duplicati nelle firme digitali 
+	- In ambito forense si riferisce principalmente all'uso degli algoritmi di hash (le "firme") per la **deduplicazione**: confrontare enormi quantità di file per escludere quelli di sistema noti (es. tramite database NSRL) o identificare copie esatte dello stesso file. Include anche l'analisi delle "file signature" (magic numbers) per smascherare file rinominati con estensioni false per occultare informazioni.
+- La procedura di descrizione in un processo civile quando viene rubato un segreto commerciale 
+	- Si ricorre tipicamente alla **"descrizione inaudita altera parte"** (senza avvisare la controparte) ex art. 129/130 del Codice della Proprietà Industriale o 692 c.p.c. Il giudice autorizza l'Ufficiale Giudiziario, affiancato da un CTU informatico, a fare un'ispezione a sorpresa (es. nella sede del sospettato) per estrarre copie forensi o dati mirati *prima* che i dispositivi possano essere formattati o le prove distrutte.
+- Definzione e disegno dello slackspace 
+	- Lo *slack space* (spazio di risulta) è lo spazio residuo inutilizzato che si crea tra la fine logica di un file e la fine fisica del cluster (l'unità minima di allocazione sul disco) che lo ospita. Poiché il sistema operativo considera l'intero cluster occupato, questo spazio non viene sovrascritto e può conservare frammenti di dati di file precedenti (cancellati), assumendo enorme rilevanza forense per recuperare password o vecchi documenti.
+- Definzione e descrizioni delle iso (35 -> gestione degli incidenti) e (37 —> gestione delle prove digitali)
+	- **ISO/IEC 27035**: Standard per l'Incident Management della sicurezza informatica. Fornisce un approccio strutturato in 5 fasi (preparazione, identificazione, valutazione, risposta e *lessons learned*) per rilevare e mitigare attacchi e violazioni in ambito aziendale. 
+	- **ISO/IEC 27037**: Linee guida rigorose destinate ai *first responder* per l'identificazione, raccolta, acquisizione e conservazione della Digital Evidence. Detta i principi metodologici affinché la prova digitale mantenga il suo valore probatorio e sia legalmente ammissibile in tribunale.

@@ -40,7 +40,7 @@ Alcune casistiche non richiedono la previa autorizzazione da sindacati o ITL/INL
 - Geolocalizzazione di smartphone aziendale
 
 ### Territorio grigio
-Tecnologie moderne introducono nuove difficoltà normative. Dispositivi come terminali personali/smart glove/smart watch rendono difficile (se non impossibile) distingure l'attività di ... 
+Tecnologie moderne introducono nuove difficoltà normative. Dispositivi come terminali personali/smart glove/smart watch rendono difficile (se non impossibile) distingure l'attività di accertamento forense ed investigazioni illegittime.
 
 
 

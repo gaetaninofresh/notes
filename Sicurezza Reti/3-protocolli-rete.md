@@ -151,9 +151,6 @@ L'architettura IPsec utilizza tre componenti fondamentali per decidere come prot
 
 *   **SADB (Security Association Database)**: È il database operativo che memorizza lo stato corrente di tutte le SA attive create tra i peer. Per ogni SA, il SADB contiene i parametri crittografici correnti negoziati (algoritmi, chiavi per la cifratura/autenticazione generate tramite IKE, durata della sessione e contatori dei Sequence Number).
 
-[IMAGINE - 8 - IPSEC Protocolli.pdf - 17]
-*Interazione tra SPD e SADB: la politica determina se e come applicare IPsec, mentre il SADB fornisce le chiavi e gli algoritmi associati al Security Parameter Index (SPI).*
-
 #### Protezione Anti-Replay
 Sia i pacchetti protetti con AH che con ESP utilizzano un Sequence Number. 
 Il mittente lo inizializza a zero quando stabilisce la SA e lo incrementa per ogni pacchetto trasmesso. Il ricevente esegue il controllo mantenendo una "sliding window" (finestra scorrevole, la cui dimensione minima pratica è di 32, o tipicamente 64 pacchetti). 

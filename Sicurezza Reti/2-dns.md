@@ -16,8 +16,6 @@ Il sistema si basa su un **Hierarchical Name Space** organizzato in questo modo:
 ## 2. Zone e Tipi di Record
 Una zona DNS è una collezione di coppie hostname/IP gestite congiuntamente da un Authoritative Nameserver.
 
-[IMAGINE - 6a - DNS Protocolli Rete.pdf - slide 4]
-
 I dati all'interno del DNS sono memorizzati in **Resource Records** (RR) che contengono i campi: 
 - Name
 - Value
@@ -53,7 +51,6 @@ La risoluzione si divide in due modalità principali:
 </p>
 
 **Risoluzione Inversa:** Il DNS mappa anche gli IP in nomi di host usando l'ordine inverso dei byte dell'IP sotto lo speciale dominio di primo livello `in-addr.arpa`.
-[IMAGINE - 6a - DNS Protocolli Rete.pdf - slide 9]
 
 ## 4. Pacchetti e Messaggi DNS
 Il DNS utilizza nativamente la porta 53/UDP (e TCP in casi specifici come risposte grandi o zone transfer). I pacchetti hanno una struttura fissa divisa in 5 sezioni:
@@ -140,8 +137,6 @@ DNSSEC introduce firme digitali basate su crittografia a chiave pubblica e nuovi
 | **RRSIG** | Contiene la firma digitale che autentica un set di record. |
 | **DS (Delegation Signer)** | Risiede nel parent (es. nel TLD `.it` per il dominio `miosito.it`) e contiene l'hash della chiave pubblica del figlio. Crea il link nella catena di fiducia. |
 | **NSEC / NSEC3** | Record speciali usati per la "Authenticated Denial of Existence", provano crittograficamente che un determinato dominio *non esiste*, evitando risposte vuote non verificabili. NSEC3 usa hash per prevenire la "zone enumeration" (il walking della zona). |
-
-[IMAGINE - 6a - DNS Protocolli Rete.pdf - slide 33]
 
 Le chiavi sono solitamente divise per ragioni di sicurezza:
 * **ZSK (Zone Signing Key):** Firma regolarmente i dati. Può essere più debole e viene ruotata spesso.
