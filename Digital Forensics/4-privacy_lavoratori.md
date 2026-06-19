@@ -30,7 +30,6 @@ L'implementazione di queste misure deve essere preceduta dall'apertura di un fas
 - **Controlli volontari**: Metodologie di controllo introdotte volontariamente in tecnologie progettate per uso generico, ie. GPS su veicoli/RFID nei badge. Passano obbligatoriamente attraverso i sindacati o ITL/INL.
 - **Controlli involontari**: Funzioni di controllo presenti sui dispositivi ma non esplicitamente impiegate per questo scopo, ie. GPS mobile/webcam/microfoni integrati...
 
-
 > L'analisi del traffico di rete è consentita solamente per finalità diagnostiche. Analogamente misure analoghe al jamming sono sanzionate penalmente.
 
 ## Esonero dall'autorizzazione
@@ -41,7 +40,4 @@ Alcune casistiche non richiedono la previa autorizzazione da sindacati o ITL/INL
 
 ### Territorio grigio
 Tecnologie moderne introducono nuove difficoltà normative. Dispositivi come terminali personali/smart glove/smart watch rendono difficile (se non impossibile) distingure l'attività di accertamento forense ed investigazioni illegittime.
-
-
-
 

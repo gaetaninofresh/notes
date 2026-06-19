@@ -1,5 +1,5 @@
 > Prerequisiti per l'accesso abusivo 
-> 1. Presenza di  misure di sicurezza (ius escludenti, principio labile), in contesto penale è sufficiente la loro presenza, in contesto civile è necessario che queste misure siano adeguate.
+> Presenza di  misure di sicurezza (ius escludenti, principio labile), in contesto penale è sufficiente la loro presenza, in contesto civile è necessario che queste misure siano adeguate.
 
 # Segreti commerciali
 ## Segretezza vs Riservatezza

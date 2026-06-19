@@ -1,11 +1,4 @@
-
-> **Note per l'esame:**
-> - 7 domande a risposta aperta (1/2 pagina).
-> - Riferimenti giuridici non richiesti eccetto artt. 359/360.
-> - **DOMANDA ESAME:** Differenza procedimento/processo penale $\to$ il processo è parte del procedimento.
-> - **DOMANDA ESAME:** La marca temporale garantisce i file di log al momento dell'evento.
 # Firme Elettroniche
-
 La gestione dei documenti informatici si basa su un impianto normativo integrato tra l'**eIDAS** e il **CAD** (Codice dell'Amministrazione Digitale).
 
 Ogni accertamento su firme e documenti digitali poggia su tre proprietà fondamentali:
@@ -15,7 +8,6 @@ Ogni accertamento su firme e documenti digitali poggia su tre proprietà fondame
 
 ## Classificazione delle Firme Elettroniche
 Il regolamento eIDAS definisce una gerarchia a 3 livelli:
-
 - **FES (Firma Elettronica Semplice)**: dati in formato elettronico associati a un documento (es. PIN, nome in email). È liberamente valutabile dal giudice e possiede valore probatorio limitato.
 - **FEA (Firma Elettronica Avanzata)**: possiede 4 requisiti (art. 26 eIDAS), è connessa univocamente al firmatario, idonea a identificarlo e creata con dati sotto il suo controllo esclusivo. Ha il valore di scrittura privata.
 - **FEQ (Firma Elettronica Qualificata)**: FEA + certificato qualificato + QSCD. Prevede un'identificazione fisica al momento del rilascio e si appoggia a terzi come garanzia.

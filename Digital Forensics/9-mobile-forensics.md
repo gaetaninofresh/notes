@@ -1,12 +1,9 @@
 # Mobile Forensics: Acquisizione e Analisi
 
-> **Extra.** L'exploit hardware Checkm8 (creato da axiomX) permette l'estrazione Full File System (FFS) sui dispositivi Apple dal 4S all'iPhone X superando le restrizioni logiche. Poiché risiede nel chip, non è patchabile via software da Apple, sebbene abbia perso efficacia sui dispositivi con iOS 17.
-
 La mobile forensics si struttura su diversi livelli di acquisizione e si scontra costantemente con i meccanismi di crittografia dei sistemi operativi.
 
 ## Livelli di Acquisizione
 Esistono cinque livelli principali di acquisizione, classificati in base al grado crescente di completezza dei dati e tecnicità richiesta.
-
 * **Esame Manuale**: L'esaminatore scorre fisicamente il dispositivo e documenta i contenuti tramite fotografie o video.
 * **Acquisizione Logica**: Estrazione del contenuto di oggetti logici esistenti e non cancellati (es. foto, contatti, SMS).
 * **Acquisizione File System (Logica Avanzata)**: Estrazione parziale di directory e file utente, tipicamente tramite backup e protocolli come AFC per iOS o ADB/MTP per Android.
