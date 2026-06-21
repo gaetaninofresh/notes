@@ -1,3 +1,19 @@
+## ASM
+#### Aggiornamenti inconsistenti
+Sia $l=(f, (i_1, \dots, i_n))$ locazione per $f(x_1, \dots, x_n)$. Un update set $U$ contiene update inconsistenti se $\exists l(f, a), l(f,b) \in U | a \neq b$
+
+#### ASM multi-agenti
+Un ASM multi-agente è $M = \{ (a, \text{program}(a)), a \in \text{AGENT}, \text{program}(a) \text{ è ASM} \}$
+
+## Kripke
+$\mathcal{M} = (S, I, \lambda, L)$:
+- $S$: insieme degli stati
+    - $f_S = (p_1 \land \dots \land p_n) \lor (p_1 \land \dots \land p_n) \dots$, con $p1, \dots, p_n$ atomi booleani dello stato 
+- $I$: insieme stati iniziali
+- $\lambda \subseteq S \times S$: relazione di transizione
+    - $f_\lambda(V, V') = \bigvee_{(s, s') \in R} (s \land s')$ con $(s, s')$ rappresentazioni booleane degli stati del cammino
+- $L: S \to 2^{AP}$: funzione di labeling (mappa stati a a proposizioni vere nello stato)
+
 ## CTL
 #### Priorità degli operatori
 1. Operatori unari: $\neg, AG, EG, AF, EF, AX, EX$
@@ -74,21 +90,6 @@
 | **No Deadlock** | Il sistema non finisce mai in stallo | $AG(EX \ \top)$ | Da ogni stato esiste sempre uno stato successore |
 | **Fairness** | Un evento accade un numero infinito di volte | *Non esprimibile* | Manca l'operatore "infinitely often" in puro CTL |
 
-## SMV
-
-#### Rappresentazione degli Stati e degli Insiemi
-- Ogni stato $s \in S$ è codificato da un vettore $(v_1, v_2, \dots, v_n)$. 
-    - Usando la funzione di etichettatura $L$, se $x_i \in L(s)$ allora $v_i=1$, altrimenti $v_i=0$. 
-    - Lo stato è rappresentato dal mintermine $l_1 \wedge l_2 \wedge \dots \wedge l_n$ (dove $l_i = x_i$ o $
-eg x_i$).
-- Un **insieme di stati** $T \subseteq S$ è descritto dalla sua **funzione caratteristica** $f_T : \{0,1\}^n \rightarrow \{0,1\}$. 
-    > In pratica, l'insieme è l'OR delle formule dei singoli stati che vi appartengono.
-
-#### Rappresentazione della Relazione di Transizione ($\Delta$)
-- Una singola transizione $s \rightarrow s'$ è vista come una coppia di vettori: $((v_1, \dots, v_n)$, $(v'_1, \dots, v'_n))$.
-- La transizione è $(l_1 \wedge \dots \wedge l_n) \wedge (l'_1 \wedge \dots \wedge l'_n)$ con $l_1, \dots, l_n$ mintermini degli stati.
-- L'intero grafo di transizione $f_\rightarrow$ è dato dall' $\lor$ di tutte le singole transizioni possibili.
-
 ### SAT
 #### Espressioni Base e Riduzioni
 | Formula ($\varphi$) | Valutazione / Sotto-chiamata |
@@ -125,3 +126,31 @@ eg x_i$).
 * **Iterazione** (ripeti finché $X = Y$):
     1.  $X = Y$
     2.  $Y = Y \cup (W \cap \{s \in S \mid \exists s', s \to s' \text{ e } s' \in Y\})$
+
+
+## NUSMV
+
+#### Struttura
+```
+MODULE main
+VAR      -- Definisce lo spazio degli stati (S)
+DEFINE   -- Definisce le etichette/macro (L)
+ASSIGN   -- Definisce stati iniziali (I) e transizioni (R)
+CTLSPEC  -- Proprietà da verificare
+```
+
+#### VAR (Variabili = Stati $S$)
+* **Tipi ammessi:** Solo finiti. `boolean`, enumerati (`{ready, busy}`), range interi (`0..10`), array (`array 0..3 of boolean`).
+* Una variabile dichiarata in `VAR` ma senza `ASSIGN` viene trattata come input esterno. Cambia in modo totalmente non deterministico ad ogni step.
+
+#### ASSIGN (Dinamica = $I$ e $R$)
+* **Inizializzazione ($I$):** `init(x) := value;` (anche non deterministico: `{val1, val2}`).
+* **Transizione ($R$):** `next(x) := case ... esac;`
+* `case` è valutato **dall'alto verso il basso**. Deve SEMPRE finire con `TRUE : <valore_default>;`. 
+* Vietate le dipendenze circolari nello stesso passo (`x := y; y := x;`). Consentite solo sui `next`.
+
+#### Composizione (Sincrona vs Asincrona)
+* **Sincrona (Default):** `m1 : Modulo();` $\rightarrow$ Tutti i moduli avanzano simultaneamente allo scatto del clock.
+* **Asincrona:** `m1 : process Modulo();` $\rightarrow$ Avanza un solo processo alla volta (interleaving).
+* Con `process` un modulo potrebbe non essere mai schedulato. È **obbligatorio** aggiungere `FAIRNESS running` per impedirlo.
+

@@ -1,0 +1,218 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{float}
+
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single
+}
+
+\begin{document}
+
+\section*{ASM}
+
+\subsubsection*{Aggiornamenti inconsistenti}
+Sia $l=(f, (i_1, \dots, i_n))$ locazione per $f(x_1, \dots, x_n)$. Un update set $U$ contiene update inconsistenti se $\exists l(f, a), l(f,b) \in U \mid a \neq b$
+
+\subsubsection*{ASM multi-agenti}
+Un ASM multi-agente è $M = \{ (a, \text{program}(a)), a \in \text{AGENT}, \text{program}(a) \text{ è ASM} \}$
+
+\section*{Kripke}
+$\mathcal{M} = (S, I, \lambda, L)$:
+\begin{itemize}
+    \item $S$: insieme degli stati
+    \begin{itemize}
+        \item $f_S = (p_1 \land \dots \land p_n) \lor (p_1 \land \dots \land p_n) \dots$, con $p_1, \dots, p_n$ atomi booleani dello stato
+    \end{itemize}
+    \item $I$: insieme stati iniziali
+    \item $\lambda \subseteq S \times S$: relazione di transizione
+    \begin{itemize}
+        \item $f_\lambda(V, V') = \bigvee_{(s, s') \in R} (s \land s')$ con $(s, s')$ rappresentazioni booleane degli stati del cammino
+    \end{itemize}
+    \item $L: S \to 2^{AP}$: funzione di labeling (mappa stati a proposizioni vere nello stato)
+\end{itemize}
+
+\section*{CTL}
+
+\subsubsection*{Priorità degli operatori}
+\begin{enumerate}
+    \item Operatori unari: $\neg, AG, EG, AF, EF, AX, EX$
+    \item Operatori binari: $\lor, \land$
+    \item $AU, EU$
+\end{enumerate}
+
+\subsubsection*{Semantica CTL}
+\begin{itemize}
+    \item \textbf{$\mathcal{M}, s \models AX\phi$}
+    \[
+    \forall s' \in S : (s, s') \in R \implies \mathcal{M}, s' \models \phi
+    \]
+    In tutti gli stati immediatamente successivi a $s$, la formula $\phi$ è soddisfatta.
+    
+    \item \textbf{$\mathcal{M}, s \models EX\phi$}
+    \[
+    \exists s' \in S : (s, s') \in R \land \mathcal{M}, s' \models \phi
+    \]
+    Esiste almeno uno stato immediatamente successivo a $s$ in cui la formula $\phi$ è soddisfatta ($E$ è il duale di $A$).
+    
+    \item \textbf{$\mathcal{M}, s \models AG\phi$}
+    \[
+    \forall \pi = (s_0, s_1, \dots) \text{ con } s_0 = s, \forall i \ge 0 : \mathcal{M}, s_i \models \phi
+    \]
+    In ogni possibile cammino di computazione uscente da $s$, la proprietà $\phi$ è globalmente invariante (vera in ogni stato del cammino).
+    
+    \item \textbf{$\mathcal{M}, s \models EG\phi$}
+    \[
+    \exists \pi = (s_0, s_1, \dots) \text{ con } s_0 = s, \forall i \ge 0 : \mathcal{M}, s_i \models \phi
+    \]
+    Esiste almeno un cammino di computazione uscente da $s$ in cui la proprietà $\phi$ è globalmente invariante.
+    
+    \item \textbf{$\mathcal{M}, s \models AF\phi$}
+    \[
+    \forall \pi = (s_0, s_1, \dots) \text{ con } s_0 = s, \exists i \ge 0 : \mathcal{M}, s_i \models \phi
+    \]
+    In ogni possibile cammino di computazione uscente da $s$, la proprietà $\phi$ è soddisfatta in almeno uno stato futuro.
+    
+    \item \textbf{$\mathcal{M}, s \models EF\phi$}
+    \[
+    \exists \pi = (s_0, s_1, \dots) \text{ con } s_0 = s, \exists i \ge 0 : \mathcal{M}, s_i \models \phi
+    \]
+    Esiste almeno un cammino di computazione uscente da $s$ tale per cui la proprietà $\phi$ è soddisfatta in almeno uno stato futuro.
+    
+    \item \textbf{$\mathcal{M}, s \models E[\phi_1 \mathcal{U} \phi_2]$}
+    \[
+    \exists \pi = (s_0, s_1, \dots) \text{ con } s_0 = s, \exists i \ge 0 : \left( \mathcal{M}, s_i \models \phi_2 \land \forall 0 \le j < i : \mathcal{M}, s_j \models \phi_1 \right)
+    \]
+    Esiste almeno un cammino di computazione uscente da $s$ in cui esiste uno stato in cui $\phi_2$ è vera e, in tutti gli stati strettamente precedenti ad esso lungo il cammino, $\phi_1$ è vera.
+\end{itemize}
+
+
+\subsubsection*{Riduzione ad insieme adeguato}
+\begin{enumerate}
+    \item $\top = \neg\perp$
+    \item $\phi_1 \lor \phi_2 = \neg(\neg\phi_1 \land \neg\phi_2)$
+    \item $\phi_1 \rightarrow \phi_2 = (\neg\phi_1 \lor \phi_2)$
+    \item $AX(\phi_1) = (\neg EX\neg\phi_1)$
+    \item $EF(\phi_1) = E[\top \ U \ \phi_1]$
+    \item $EG(\phi_1) = (\neg AF\neg\phi_1)$
+    \item $AG(\phi_1) = (\neg EF\neg\phi_1)$
+\end{enumerate}
+
+\subsection*{Proprietà CTL}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3cm}|p{4.5cm}|p{3.5cm}|p{4cm}|}
+\hline
+\textbf{Proprietà} & \textbf{Descrizione / Concetto} & \textbf{Traduzione CTL} & \textbf{Note e Varianti} \\ \hline
+\textbf{Raggiungibilità} & Possibilità di raggiungere una data situazione & $EF \varphi$ & \textbf{Condizionata:} Usa operatore $EU$\newline \textbf{Da stati raggiungibili:} $AG(EF \ \text{init})$ \\ \hline
+\textbf{Safety} & Cose cattive non si verificano mai & $AG \varphi$ & \textbf{Condizionata:} Usa operatore $AU$ \\ \hline
+\textbf{Liveness} & Cose buone prima o poi si verificano & Combinazioni (es. $AG + AF$) & $AG(\text{richiesta} \to AF \ \text{risposta})$ \\ \hline
+\textbf{No Deadlock} & Il sistema non finisce mai in stallo & $AG(EX \ \top)$ & Da ogni stato esiste sempre uno stato successore \\ \hline
+\textbf{Fairness} & Un evento accade un numero infinito di volte & \textit{Non esprimibile} & Manca l'operatore ``infinitely often'' in puro CTL \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\subsection*{SAT}
+
+\subsubsection*{Espressioni Base e Riduzioni}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Formula ($\varphi$)} & \textbf{Valutazione / Sotto-chiamata} \\ \hline
+$\top$ & $S$ \\ \hline
+$\bot$ & $\emptyset$ \\ \hline
+$p$ & $\{s \in S \mid p \in L(s)\}$ \\ \hline
+$\neg\varphi_1$ & $S \setminus \text{SAT}(\varphi_1)$ \\ \hline
+$\varphi_1 \land \varphi_2$ & $\text{SAT}(\varphi_1) \cap \text{SAT}(\varphi_2)$ \\ \hline
+$\varphi_1 \lor \varphi_2$ & $\text{SAT}(\varphi_1) \cup \text{SAT}(\varphi_2)$ \\ \hline
+$\varphi_1 \to \varphi_2$ & $\text{SAT}(\neg\varphi_1 \lor \varphi_2)$ \\ \hline
+$EX(\varphi_1)$ & $\text{SAT\_EX}(\varphi_1)$ \\ \hline
+$E[\varphi_1 U \varphi_2]$ & $\text{SAT\_EU}(\varphi_1, \varphi_2)$ \\ \hline
+$AF(\varphi_1)$ & $\text{SAT\_AF}(\varphi_1)$ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection*{Calcolo degli Operatori Temporali}
+
+\textbf{$EX$ (\texttt{SAT\_EX})}
+\begin{itemize}
+    \item \textbf{Inizializzazione:} $X = \text{SAT}(\varphi)$
+    \item \textbf{Risultato:} $Y = \{s \in S \mid \exists s', s \to s' \text{ e } s' \in X\}$
+\end{itemize}
+
+\textbf{$AF$ (\texttt{SAT\_AF})} --- \textit{Minimo Punto Fisso}
+\begin{itemize}
+    \item \textbf{Inizializzazione:} $X = S$, $Y = \text{SAT}(\varphi)$
+    \item \textbf{Iterazione} (ripeti finché $X = Y$):
+    \begin{enumerate}
+        \item $X = Y$
+        \item $Y = Y \cup \{s \in S \mid \forall s' \text{ se } s \to s' \text{ allora } s' \in Y\}$
+    \end{enumerate}
+    \item \textbf{Risultato:} $Y$
+\end{itemize}
+
+\textbf{$EU$ (\texttt{SAT\_EU})} --- \textit{Minimo Punto Fisso}
+\begin{itemize}
+    \item \textbf{Inizializzazione:} $W = \text{SAT}(\varphi)$, $X = S$, $Y = \text{SAT}(\psi)$
+    \item \textbf{Iterazione} (ripeti finché $X = Y$):
+    \begin{enumerate}
+        \item $X = Y$
+        \item $Y = Y \cup (W \cap \{s \in S \mid \exists s', s \to s' \text{ e } s' \in Y\})$
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+\section*{NUSMV}
+
+\subsection*{Sintassi}
+
+\begin{lstlisting}
+MODULE main
+VAR      -- Definisce lo spazio degli stati (S)
+DEFINE   -- Definisce le etichette/macro (L)
+ASSIGN   -- Definisce stati iniziali (I) e transizioni (R)
+CTLSPEC  -- Proprieta da verificare
+\end{lstlisting}
+
+\subsubsection*{VAR (Variabili = Stati $S$)}
+\begin{itemize}
+    \item \textbf{Tipi ammessi:} Solo finiti. \texttt{boolean}, enumerati (\texttt{\{ready, busy\}}), range interi (\texttt{0..10}), array (\texttt{array 0..3 of boolean}).
+    \item Una variabile dichiarata in \texttt{VAR} ma senza \texttt{ASSIGN} viene trattata come input esterno. Cambia in modo totalmente non deterministico ad ogni step.
+\end{itemize}
+
+\subsubsection*{ASSIGN (Dinamica = $I$ e $R$)}
+\begin{itemize}
+    \item \textbf{Inizializzazione ($I$):} \texttt{init(x) := value;} (anche non deterministico: \texttt{\{val1, val2\}}).
+    \item \textbf{Transizione ($R$):} \texttt{next(x) := case ... esac;}
+    \item \texttt{case} è valutato \textbf{dall'alto verso il basso}. Deve SEMPRE finire con \texttt{TRUE : <valore\_default>;}.
+    \item Vietate le dipendenze circolari nello stesso passo (\texttt{x := y; y := x;}). Consentite solo sui \texttt{next}.
+\end{itemize}
+
+\subsubsection*{Composizione (Sincrona vs Asincrona)}
+\begin{itemize}
+    \item \textbf{Sincrona (Default):} \texttt{m1 : Modulo();} $\rightarrow$ Tutti i moduli avanzano simultaneamente allo scatto del clock.
+    \item \textbf{Asincrona:} \texttt{m1 : process Modulo();} $\rightarrow$ Avanza un solo processo alla volta (interleaving).
+    \item Con \texttt{process} un modulo potrebbe non essere mai schedulato. È \textbf{obbligatorio} aggiungere \texttt{FAIRNESS running} per impedirlo.
+\end{itemize}
+
+\end{document}

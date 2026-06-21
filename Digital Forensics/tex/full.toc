@@ -1,0 +1,144 @@
+\babel@toc {nil}{}\relax 
+\contentsline {section}{\numberline {1}Digital Forensics nel Processo Penale}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Le Quattro Fasi del Procedimento Penale}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Fase I --- Indagini Preliminari}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Fase II --- Udienza Preliminare (Fase eventuale)}{2}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Fase III --- Atti Preliminari al Dibattimento}{3}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Fase IV --- Il Dibattimento e la Decisione}{3}{subsubsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.2}Attori e Ausiliari Tecnici}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Tipologie di Accertamento Tecnico}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Mezzi di Ricerca della Prova Digitale}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}La Relazione Tecnica}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}In Dibattimento}{5}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Digital Forensics nel Processo Civile}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Princìpi Fondamentali della Prova}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}L'Onere della Prova}{5}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}La Prova di Resistenza}{5}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Attori e Ausiliari Tecnici}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Strumenti Pre-Contenziosi e d'Urgenza}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Le Fasi dell'Accertamento Tecnico (CTU)}{6}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}1. Nomina e Formulazione del Quesito}{6}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}2. Inizio Operazioni Peritali (IOP) e Acquisizione}{7}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}3. Analisi, Espunzione e Limiti della Privacy (GDPR)}{7}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}4. Bozza e Osservazioni}{7}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.5}5. Relazione Finale}{7}{subsubsection.2.4.5}%
+\contentsline {section}{\numberline {3}Differenze tra Processo Penale e Processo Civile in Digital Forensics}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}1. Scopo dell'Indagine e Iniziativa}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}2. L'Onere della Prova}{8}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}3. Gli Ausiliari Tecnici del Giudice}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}4. Modalità di Acquisizione e Contraddittorio}{8}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}5. Limiti dell'Indagine, Pertinenza e Privacy}{9}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Firme Elettroniche}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Classificazione delle Firme Elettroniche}{9}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Standard italiano}{10}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Formati di Firma}{10}{subsubsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2}Validazione e Marcatura Temporale}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Analisi delle Copie}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Prassi e Analisi Forense}{11}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}FES ed Email}{11}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}PDF Incremental Updates}{11}{subsubsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}Conservazione Digitale}{11}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Decreto legislativo 231/2001}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Modello Organizzativo - MOG}{12}{subsection.5.1}%
+\contentsline {section}{\numberline {6}GDPR e gestione di data breach}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Figure e responsabilità}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Sanzioni}{13}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}Privacy by Design \& Default}{14}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}Diritti dell'interessato}{14}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Data Protection Impact Assessment - DPIA}{14}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Data Breach}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}NIS2 e DORA}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Procedure operative e Investigazioni Interne}{15}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Cyber Resilience Act (CRA)}{15}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Ambito di Applicazione}{15}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Obblighi Fondamentali dei Produttori}{16}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Implicazioni per la Digital Forensics e la Compliance}{16}{subsubsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.4}Quadro Sanzionatorio}{16}{subsection.7.4}%
+\contentsline {section}{\numberline {8}Privacy del lavoratore}{17}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Misure di controllo consentite}{17}{subsection.8.1}%
+\contentsline {subsubsection}{\numberline {8.1.1}Presupposto dell'informativa}{17}{subsubsection.8.1.1}%
+\contentsline {subsubsection}{\numberline {8.1.2}Controlli difensivi}{18}{subsubsection.8.1.2}%
+\contentsline {subsubsection}{\numberline {8.1.3}Tipologia di controlli}{18}{subsubsection.8.1.3}%
+\contentsline {subsection}{\numberline {8.2}Esonero dall'autorizzazione}{18}{subsection.8.2}%
+\contentsline {subsubsection}{\numberline {8.2.1}Territorio grigio}{18}{subsubsection.8.2.1}%
+\contentsline {section}{\numberline {9}Windows Forensics}{18}{section.9}%
+\contentsline {subsection}{\numberline {9.1}NTFS - New Technology Filesystem}{18}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Organizzazione del disco}{19}{subsubsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.2}Cancellazione di file}{20}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Cestino}{20}{subsubsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.3}Allocazione}{20}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Carving}{20}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Windows Shadow Copy - VSS}{20}{subsubsection.9.4.1}%
+\contentsline {section}{\numberline {10}Registro Windows}{21}{section.10}%
+\contentsline {subsubsection}{\numberline {10.0.1}Artefatti di esecuzione e Navigazione}{21}{subsubsection.10.0.1}%
+\contentsline {paragraph}{RecentDocs}{21}{section*.2}%
+\contentsline {paragraph}{Shellbags}{21}{section*.3}%
+\contentsline {paragraph}{UserAssist}{21}{section*.4}%
+\contentsline {paragraph}{Prefetch e LNK Files}{22}{section*.5}%
+\contentsline {paragraph}{Browser Forensics}{22}{section*.6}%
+\contentsline {section}{\numberline {11}Cloud Forensics}{22}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Differenze con forensics tradizionale}{22}{subsection.11.1}%
+\contentsline {section}{\numberline {12}Legal hold}{22}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Azure}{22}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}AWS}{22}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Segreti commerciali}{22}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Segretezza vs Riservatezza}{23}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Codice della proprietà industriale}{23}{subsection.13.2}%
+\contentsline {subsubsection}{\numberline {13.2.1}Art. 98 CPI - Oggetto della tutela}{23}{subsubsection.13.2.1}%
+\contentsline {subsubsection}{\numberline {13.2.2}Quadro sanzionatorio penale}{24}{subsubsection.13.2.2}%
+\contentsline {subsubsection}{\numberline {13.2.3}Diritto d'autore}{24}{subsubsection.13.2.3}%
+\contentsline {subsubsection}{\numberline {13.2.4}Quantificazione del danno}{25}{subsubsection.13.2.4}%
+\contentsline {paragraph}{Contesto penale}{25}{section*.7}%
+\contentsline {subsubsection}{\numberline {13.2.5}Titolarità del software}{26}{subsubsection.13.2.5}%
+\contentsline {subsubsection}{\numberline {13.2.6}Brevetto}{26}{subsubsection.13.2.6}%
+\contentsline {subsubsection}{\numberline {13.2.7}Modalità d'analisi (Software Forensics)}{26}{subsubsection.13.2.7}%
+\contentsline {subsection}{\numberline {13.3}Reverse Engineering}{27}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Valutazione Forense del Software}{27}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Contesti di Applicazione e Inquadramento Civilistico}{27}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Fasi Preliminari e Certificazione Forense}{27}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Standard e Metodologie di Stima}{28}{subsection.14.3}%
+\contentsline {subsubsection}{\numberline {14.3.1}Criterio del Costo (Cost Approach)}{28}{subsubsection.14.3.1}%
+\contentsline {subsubsection}{\numberline {14.3.2}Criterio di Mercato (Market Approach)}{28}{subsubsection.14.3.2}%
+\contentsline {subsubsection}{\numberline {14.3.3}Criterio Finanziario (Income Approach - DCF)}{28}{subsubsection.14.3.3}%
+\contentsline {subsection}{\numberline {14.4}Analisi Tecnica e Metriche di Qualità}{28}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Fattori di Rischio e Svalutazione dell'Asset}{29}{subsection.14.5}%
+\contentsline {subsubsection}{\numberline {14.5.1}Licenze Open Source e SCA}{29}{subsubsection.14.5.1}%
+\contentsline {subsubsection}{\numberline {14.5.2}Cybersecurity e Privacy (GDPR)}{29}{subsubsection.14.5.2}%
+\contentsline {subsubsection}{\numberline {14.5.3}Proprietà Intellettuale (Diritti Morali vs Patrimoniali)}{29}{subsubsection.14.5.3}%
+\contentsline {subsection}{\numberline {14.6}Contesti Valutativi Particolari}{29}{subsection.14.6}%
+\contentsline {subsection}{\numberline {14.7}Struttura della Perizia e Responsabilità}{29}{subsection.14.7}%
+\contentsline {subsection}{\numberline {14.8}Frontiere Future}{30}{subsection.14.8}%
+\contentsline {section}{\numberline {15}Mobile Forensics: Acquisizione e Analisi}{30}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Livelli di Acquisizione}{30}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Crittografia e Protezione Dati}{30}{subsection.15.2}%
+\contentsline {subsubsection}{\numberline {15.2.1}Android: FDE vs FBE}{30}{subsubsection.15.2.1}%
+\contentsline {subsubsection}{\numberline {15.2.2}iOS: Classi di Protezione}{31}{subsubsection.15.2.2}%
+\contentsline {subsection}{\numberline {15.3}Strumenti Forensi e Analisi}{31}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}L'Exploit Checkm8}{31}{subsection.15.4}%
+\contentsline {subsubsection}{\numberline {15.4.1}Strumentazioni}{32}{subsubsection.15.4.1}%
+\contentsline {subsubsection}{\numberline {15.4.2}Log di Sistema su iOS}{32}{subsubsection.15.4.2}%
+\contentsline {section}{\numberline {16}Gestione degli Incidenti e delle Prove Digitali: Standard ISO/IEC}{32}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Standard ISO/IEC 27035: Gestione degli Incidenti di Sicurezza}{32}{subsection.16.1}%
+\contentsline {subsubsection}{\numberline {16.1.1}Ruoli Chiave}{33}{subsubsection.16.1.1}%
+\contentsline {subsubsection}{\numberline {16.1.2}Le 5 Fasi del Processo di Gestione}{33}{subsubsection.16.1.2}%
+\contentsline {subsubsection}{\numberline {16.1.3}Focus Operativo: Attacco Ransomware}{33}{subsubsection.16.1.3}%
+\contentsline {subsection}{\numberline {16.2}Standard ISO/IEC 27037: Gestione delle Prove Digitali}{34}{subsection.16.2}%
+\contentsline {subsubsection}{\numberline {16.2.1}Ruoli Operativi}{34}{subsubsection.16.2.1}%
+\contentsline {subsubsection}{\numberline {16.2.2}Requisiti e Pilastri Metodologici}{34}{subsubsection.16.2.2}%
+\contentsline {subsubsection}{\numberline {16.2.3}Le 4 Fasi del Processo Forense}{34}{subsubsection.16.2.3}%
+\contentsline {subsubsection}{\numberline {16.2.4}La Catena di Custodia (Chain of Custody)}{35}{subsubsection.16.2.4}%
+\contentsline {section}{\numberline {17}Digital Forensics Sanitaria}{35}{section.17}%
+\contentsline {subsection}{\numberline {17.1}Aree di indagine e sistemi critici}{35}{subsection.17.1}%
+\contentsline {subsubsection}{\numberline {17.1.1}Cartella Clinica Elettronica (CCE)}{36}{subsubsection.17.1.1}%
+\contentsline {subsubsection}{\numberline {17.1.2}Dispositivi Medici (IoMT) e Diagnostica}{36}{subsubsection.17.1.2}%
+\contentsline {subsection}{\numberline {17.2}Reati e Responsabilità}{36}{subsection.17.2}%
+\contentsline {subsubsection}{\numberline {17.2.1}Controlli difensivi e Cyber-Responsabilità}{36}{subsubsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.3}Esonero dalle procedure standard}{37}{subsection.17.3}%
+\contentsline {subsubsection}{\numberline {17.3.1}Territorio grigio e Incident Response}{37}{subsubsection.17.3.1}%
+\contentsline {section}{\numberline {18}14 - Cheatsheet Digital Forensics}{37}{section.18}%
+\contentsline {subsection}{\numberline {18.1}L'Accertamento nelle Indagini Penali e Civili}{38}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}Firme Elettroniche e D.Lgs 231/2001}{38}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}Privacy, GDPR e File System}{38}{subsection.18.3}%
+\contentsline {subsection}{\numberline {18.4}Cloud, IoT e Segreti Commerciali}{39}{subsection.18.4}%
+\contentsline {subsection}{\numberline {18.5}Diritto d'Autore e Standard ISO/IEC}{39}{subsection.18.5}%
+\contentsline {section}{\numberline {19}15 - Domande d'esame}{39}{section.19}%
