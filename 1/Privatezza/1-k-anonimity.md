@@ -58,7 +58,6 @@ Il lattice ha come bottom il dato originale $\lang R_0 , Z_0\rang$ e come nodo "
 </p>
 
 #### DEF -  Generalizzazione con Soppressione
-
 Date due tabelle $T$ e $T^{*}$:
 
 $T \preceq T^{*}$ ($T^{*}$ è una versione generalizzata con soppressione di $T$) se:
